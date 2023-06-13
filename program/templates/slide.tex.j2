@@ -1,0 +1,54 @@
+\section{% raw %}{{% endraw %}{{ title }}{% raw %}}{% endraw %}
+
+{
+\setbeamercolor{tag_color}{% raw %}{{% endraw %}bg={{ category }},fg=primary_color{% raw %}}{% endraw %}
+\setbeamercolor{slide_num_color}{bg=secondary_color,fg=primary_color_inverse}
+\setbeamertemplate{footline}{
+      \leavevmode%
+      \hbox{% raw %}{{% endraw %}%
+      \begin{beamercolorbox}[wd=0.125\paperwidth,ht=2.25ex,dp=1ex,center]{tag_color}%
+        {{ category }}
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=0.75\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+        \href{% raw %}{{% endraw %}https://doi.org/{{ doi }}{% raw %}}{% endraw %}{% raw %}{{% endraw %}{{ doi }}{% raw %}}{% endraw %}
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=0.125\paperwidth,ht=2.25ex,dp=1ex,right]{slide_num_color}%
+        \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+      \end{beamercolorbox}%
+  {% raw %}}{% endraw %}
+  \vskip0pt%
+}
+\begin{frame}
+\frametitle{% raw %}{{% endraw %}{{ title }}{% raw %}}{% endraw %}
+    \vspace{-0.75em}
+    \begin{tcolorbox}[title=\textbf{Summary},height=2.5cm,fontupper=\tiny,colbacktitle=summary_color,colback=secondary_color_inverse!15, left=1mm,lefttitle=0mm,right=1mm,colframe=secondary_color,coltitle=primary_color_inverse,coltext=primary_color,top=0mm,fonttitle=\small]
+        % The word limit here is 125 words, not including spaces.
+        {{ summary }}
+    \end{tcolorbox}
+    \vspace{-0.25em}
+    \begin{minipage}{0.795\textwidth}
+        \begin{tcolorbox}[title=\textbf{Figures},height=4.6cm,fontupper=\tiny,colbacktitle=figures_color,colback=secondary_color_inverse!15, left=0mm,right=0mm,colframe=secondary_color,coltitle=primary_color_inverse,coltext=primary_color,top=1mm,fonttitle=\small]
+            \begin{figure}[!h]
+                \centering
+                    \mbox{
+                        {%- for figure in figures %}
+                        \subfigure{
+                            \includegraphics[height=3.5cm,keepaspectratio]{% raw %}{{% endraw %}assets/figures/{{ uuid_name }}/{{ figure}} {% raw %}}{% endraw %}
+                        }  \quad \quad 
+                        {% endfor %}
+                    }
+            \end{figure}
+        \end{tcolorbox}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.195\textwidth}
+        \begin{tcolorbox}[title=\textbf{Notes},height=4.6cm,fontupper=\tiny,colbacktitle=notes_color,colback=secondary_color_inverse!15, left=0mm,leftupper=-3.5mm,right=0.5mm,colframe=secondary_color,coltitle=primary_color_inverse,coltext=primary_color,top=1mm,fonttitle=\small]
+            \begin{itemize}
+            {%- for note_item in notes %}
+                \item {{ note_item }}
+            {% endfor %}
+            \end{itemize}
+        \end{tcolorbox}
+    \end{minipage}
+\end{frame}
+}

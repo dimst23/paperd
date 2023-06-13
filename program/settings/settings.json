@@ -1,0 +1,28 @@
+{
+    "category_tags": [
+        {
+            "name": "Literature Review",
+            "color": "FFEAD0"
+        },
+        {
+            "name": "Discovery",
+            "color": "9792e3"
+        },
+        {
+            "name": "Must Read",
+            "color": "ff715b"
+        },
+        {
+            "name": "Method",
+            "color": "7BE0AD"
+        },
+        {
+            "name": "Idea",
+            "color": "f6ae2d"
+        }
+    ],
+    "output_directories": [
+        "output/assets/figures",
+        "output/slides"
+    ]
+}

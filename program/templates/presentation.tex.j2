@@ -1,0 +1,81 @@
+\documentclass[aspectratio=169]{beamer}
+\usefonttheme{structurebold}
+
+\definecolor{primary_color}{HTML}{001524}
+\definecolor{primary_color_inverse}{HTML}{ffeadb}
+\definecolor{secondary_color}{HTML}{2b4162}
+\definecolor{secondary_color_inverse}{HTML}{d4be9d}
+\definecolor{accent_color}{HTML}{fa9f42}
+\definecolor{notes_color}{HTML}{72a276} %38aecc
+\definecolor{figures_color}{HTML}{38aecc}
+\definecolor{summary_color}{HTML}{ba2c73}
+
+%%% Label colors
+{%- for label in labels %}
+\definecolor{% raw %}{{% endraw %}{{ label['name'] }}{% raw %}}{% endraw %}{% raw %}{{% endraw %}HTML{% raw %}}{% endraw %}{% raw %}{{% endraw %}{{ label['color'] }}{% raw %}}{% endraw %}
+{% endfor %}
+%%% Label colors
+
+\mode<presentation> {
+\usetheme{Madrid}
+
+\setbeamercolor*{palette primary}{bg = primary_color, fg = primary_color_inverse}
+\setbeamercolor*{palette secondary}{bg = secondary_color, fg = primary_color_inverse}
+\setbeamercolor*{palette tertiary}{bg = primary_color, fg = primary_color_inverse}
+\setbeamercolor{section in toc}{fg=primary_color,bg=white}
+\setbeamercolor{normal text}{fg=primary_color}
+\setbeamercolor{section number projected}{bg=accent_color,fg=primary_color}
+\setbeamercolor{subsection number projected}{bg=primary_color,fg=primary_color}
+\setbeamercolor{itemize item}{fg=primary_color}
+\setbeamercolor{caption name}{fg=primary_color}
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{subsection number projected}[circle]
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamertemplate{caption}[numbered]
+\setbeamercovered{transparent}
+}
+
+\setbeamerfont{frametitle}{size=\large}
+
+\setbeamerfont{block title}{size=\small}
+\setbeamerfont{block title example}{size=\small}
+\setbeamerfont{block body example}{size=\tiny}
+\setbeamerfont{block body}{size=\tiny}
+
+\beamertemplatenavigationsymbolsempty
+
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{relsize}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{shadowtext}
+
+% Title Page
+\title[]{}
+\author{}
+\date{\today}
+
+\makeatletter
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{% raw %}{{% endraw %}%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+{% raw %}}{% endraw %}
+\makeatother
+
+\begin{document}
+
+% Slides
+{%- for slide_name in slides %}
+\input{% raw %}{{% endraw %}slides/slide-{{ slide_name }}{% raw %}}{% endraw %}
+{% endfor %}
+
+\end{document} 
